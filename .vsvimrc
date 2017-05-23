@@ -1,0 +1,13 @@
+" Map easier tab nagivation keys
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+
+" Map Shft+J/K to Scroll
+nnoremap <S-j> <C-e>
+nnoremap <S-k> <C-y>
+
+" Jump to search word as you type
+set incsearch
+
+" Highlight searches by default
+set hlsearch 

@@ -1,0 +1,41 @@
+[http]
+	sslVerify = false
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	dt = difftool
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	cleanall = clean -Xdf
+[user]
+	name = Paul Milla
+	email = paul.milla@mattersight.com
+[core]
+	autocrlf = true
+	excludesfile = C:\\Users\\matr06688\\Documents\\gitignore_global.txt
+[diff]
+	tool = vsdiffmerge
+[difftool]
+	prompt = true
+[difftool "vsdiffmerge"]
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsDiffMerge.exe\" \"$LOCAL\" \"$REMOTE\" //t
+	keepbackup = false
+	trustexistcode = true
+[difftool "vscode-difftool"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+	keepbackup = false
+	trustexistcode = true
+[merge]
+	tool = vsdiffmerge
+[mergetool]
+	prompt = true
+[mergetool "vsdiffmerge"]
+	cmd = \"C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\IDE\\vsdiffmerge.exe\" \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\" //m
+	keepbackup = false
+	trustexistcode = true
+[push]
+	default = simple
+[credential]
+	helper = wincred
