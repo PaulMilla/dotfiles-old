@@ -31,6 +31,9 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 Plugin 'editorconfig-vim'
 
+" Sublime-style multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+
 " Web stuff
 Plugin 'pangloss/vim-javascript'
 Plugin 'hail2u/vim-css3-syntax.git'
@@ -65,9 +68,9 @@ set hlsearch            " Higlihts search results
 
 " Identation
 set autoindent          " Copy indent from current line when starting a new line
-set smarttab
+set smarttab            " Add tabs equal to the indentation level
 set tabstop=2           " Number of space og a <Tab> character
-set softtabstop=2
+set softtabstop=2       " Set how many columns vim uses when <Tab> in insert mode
 set shiftwidth=2        " Number of spaces use by autoindent
 set expandtab           " Pressing <Tab> puts spaces, and < and > for indenting uses psaces
 
@@ -158,4 +161,9 @@ endif
 if !has("unix")
   " backspace and cursor keys wrap to previous/next line
   set backspace=indent,eol,start whichwrap+=<,>,[,
+endif
+
+if has("gui_running")
+  " FAQ for terryma/vim-multiple-cursors
+  set selection=inclusive
 endif

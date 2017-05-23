@@ -26,6 +26,5 @@ New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 $file = ".vsvimrc"
 New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
-
 $file = "profile.ps1"
 #New-Item -ItemType HardLink -Path "$HOME\Documents\WindowsPowerShell\$file" -Value "$PSScriptRoot\$file"
