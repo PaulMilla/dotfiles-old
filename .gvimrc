@@ -125,7 +125,7 @@ if has("gui_running")
     set guifont=-*-hermitr-medium-r-normal-*-*-180-*-*-m-*-*
   else
     "set guifont=Hermit:h10:cDEFAULT
-    set guifont=Source_Code_Pro:h10:cANSI:qDRAFT
+    set guifont=Source_Code_Pro_for_Powerline:h10:cANSI:qDRAFT
   endif
 endif
 
