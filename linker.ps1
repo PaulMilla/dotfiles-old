@@ -1,30 +1,59 @@
 # TODO: Make sure $HOME is valid
 # TODO: Make sure git is installed
 
-# Install the vim plugin-manager that we will use in our vim configs
-$vundle_install = "git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim"
-iex "$vundle_install"
+$archive_dir = "$HOME\dotfiles_old"
+
+function Archive-Old ($Path) {
+  if (-Not (Test-Path $archive_dir)) {
+    New-Item $archive_dir -ItemType Directory | Out-Null
+  }
+  Move-Item $Path $archive_dir -Force
+}
+
+function Create-Hardlink ($Path, $Value) {
+  If (Test-Path $Path) {
+    Archive-Old $Path
+  }
+
+  New-Item -ItemType HardLink -Path $Path -Value $Value
+}
+
 
 # TODO: Make sure these files exist
-# TODO: Wrap the New-Item calls in a function
 $file = ".bashrc"
-New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
+Create-HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
 $file = ".gitconfig"
-New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
+Create-HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
 $file = ".spacemacs"
-New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
+Create-HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
 $file = ".vimrc"
-New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
+Create-HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
 $file = ".gvimrc"
-New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
+Create-HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
-# Is this really needed?
-$file = ".vsvimrc"
-New-Item -ItemType HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
+$file = ".vsvimrc" # Is this really needed?
+Create-HardLink -Path "$HOME\$file" -Value "$PSScriptRoot\$file"
 
 $file = "profile.ps1"
 #New-Item -ItemType HardLink -Path "$HOME\Documents\WindowsPowerShell\$file" -Value "$PSScriptRoot\$file"
+
+
+# Install the vim plugin-manager that we will use in our vim configs
+if (-Not (Test-Path $HOME/.vim/bundle/Vundle.vim)) {
+  iex "git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim"
+}
+
+# Ask whether or not to install powerline fonts
+$install_fonts = Read-Host "Install Powerline Fonts (https://github.com/powerline/fonts)? [Y/n]"
+if ($install_fonts -EQ "Y") {
+  iex "git clone https://github.com/powerline/fonts powerline-fonts"
+  Push-Location "$PSScriptRoot/powerline-fonts"
+  & "$PSScriptRoot/powerline-fonts/install.ps1"
+  Pop-Location
+  Remove-Item ./powerline-fonts -Force -Recurse
+}
+
