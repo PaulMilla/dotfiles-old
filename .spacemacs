@@ -14,6 +14,8 @@
 You should not put any user code in this function besides modifying the variable
 values."
   (setq-default
+   ;; Turn off word wrap
+   truncate-lines 1
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
@@ -38,6 +40,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      markdown
      windows-scripts
      javascript
