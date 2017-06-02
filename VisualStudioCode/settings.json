@@ -1,0 +1,88 @@
+// Place your settings in this file to overwrite the default settings
+{
+    // Format on paste
+    "editor.formatOnPaste": true,
+
+    // Enable Font Ligatures (one char symbols for arrows, greater than or equal to, ect)
+    "editor.fontLigatures": true,
+    // We need a font that is capable of supporting FontLigatures
+    "editor.fontFamily": "Fira Code",
+    "editor.fontSize": 14,
+
+    // Auto Save when loosing focus
+    "files.autoSave": "onFocusChange",
+
+    // Change the size of tab characters
+    "editor.tabSize": 4,
+    // Insert spaces in place of tabs
+    "editor.insertSpaces": true,
+    
+    // Set WorkerSettings.config to be read with xml syntax
+    "files.associations": {
+        ".config" : "xml"
+    },
+
+    ////////////////////////////////////////////////////////////////////////
+    // VsCodeVim
+    ////////////////////////////////////////////////////////////////////////
+
+    // Why did they make this the default?
+    "vim.disableAnnoyingNeovimMessage": true,
+
+    // Setup neovim - https://github.com/neovim/neovim
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "C:\\tools\\neovim\\Neovim\\bin\\nvim.exe",
+
+    // Set incremental search highlighting
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+
+    // Set custom vim key bindings
+    "vim.otherModesKeyBindingsNonRecursive": [
+        // Set "J" to scroll the page down
+        {
+            "before": ["J"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "scrollLineDown",
+                    "args": []
+                }
+            ]
+        },
+        // Set "K" to scroll the page up
+        {
+            "before": ["K"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "scrollLineUp",
+                    "args": []
+                }
+            ]
+        },
+        // Set "H" to previous tab
+        {
+            "before": ["H"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.previousEditor",
+                    "args": []
+                }
+            ]
+        },
+        // Set "L" to next tab
+        {
+            "before": ["L"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.nextEditor",//workbench.action.previousEditor
+                    "args": []
+                }
+            ]
+        }
+
+    ]
+}
